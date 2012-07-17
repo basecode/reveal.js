@@ -767,10 +767,10 @@ var Reveal = (function(){
 		var bits = window.location.hash.slice(2).split('/');
 
 		// Read the index components of the hash
-		indexh = parseInt( bits[0] ) || 0 ;
-		indexv = parseInt( bits[1] ) || 0 ;
+		var h = parseInt( bits[0] ) || 0 ;
+		var v = parseInt( bits[1] ) || 0 ;
 
-		navigateTo( indexh, indexv );
+		navigateTo( h, v );
 	}
 
 	/**
