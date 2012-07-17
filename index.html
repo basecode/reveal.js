@@ -1,9 +1,9 @@
-<!doctype html>  
+<!doctype html>
 <html lang="en">
-	
+
 	<head>
 		<meta charset="utf-8">
-		
+
 		<title>reveal.js - HTML5 Presentations</title>
 
 		<meta name="description" content="An easy to use CSS 3D slideshow tool for quickly creating good looking HTML presentations.">
@@ -11,23 +11,23 @@
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-		
+
 		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-		
+
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/main.css">
 		<link rel="stylesheet" href="css/print.css" type="text/css" media="print">
 
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 	</head>
-	
+
 	<body>
-		
+
 		<div class="reveal">
 
 			<!-- Used to fade in a background when a specific slide state is reached -->
 			<div class="state-background"></div>
-			
+
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
@@ -38,11 +38,11 @@
 						if( navigator.userAgent.match( /(iPhone|iPad|iPod|Android)/i ) ) document.write( '<p style="color: rgba(0,0,0,0.3); text-shadow: none;">('+'Tap to navigate'+')</p>' );
 					</script>
 				</section>
-				
+
 				<section>
 					<h2>Heads Up</h2>
 					<p>
-						reveal.js is an easy to use, HTML based, presentation tool. You'll need a modern browser with 
+						reveal.js is an easy to use, HTML based, presentation tool. You'll need a modern browser with
 						support for CSS 3D transforms to see it in its full glory.
 					</p>
 					<p>
@@ -53,7 +53,7 @@
 						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you run the speaker notes server.
 					</aside>
 				</section>
-				
+
 				<!-- Example of nested vertical slides -->
 				<section>
 					<section>
@@ -122,7 +122,7 @@
 						<li>Or here</li>
 					</ul>
 				</section>
-				
+
 				<section>
 					<h2>Fantastic Ordered List</h2>
 					<ol>
@@ -176,17 +176,17 @@
 						The nice thing about standards is that there are so many to choose from</q> and block:
 					</p>
 					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						For years there has been a theory that millions of monkeys typing at random on millions of typewriters would 
+						For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
 						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.
 					</blockquote>
 				</section>
-				
+
 				<section>
 					<h2>Pretty Code</h2>
 					<pre><code contenteditable>
 function linkify( selector ) {
   if( supports3DTransforms ) {
-    
+
     var nodes = document.querySelectorAll( selector );
 
     for( var i = 0, len = nodes.length; i < len; i++ ) {
@@ -201,7 +201,7 @@ function linkify( selector ) {
 					</code></pre>
 					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
 				</section>
-				
+
 				<section>
 					<h2>Intergalactic Interconnections</h2>
 					<p>
@@ -220,14 +220,14 @@ function linkify( selector ) {
 						<li class="fragment"><strong>fragments</strong></li>
 					</ol>
 				</section>
-				
+
 				<section>
 					<h2>Spectacular image!</h2>
 					<a class="image" href="http://hakim.se/experiments/html5/breakdom/" target="_blank">
 						<img width="320" height="412" src="https://s3.amazonaws.com/hakim-static/reveal-js/breakdom.png">
 					</a>
 				</section>
-				
+
 				<section>
 					<h2>Stellar Links</h2>
 					<ul>
@@ -236,7 +236,7 @@ function linkify( selector ) {
 						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
 					</ul>
 				</section>
-				
+
 				<section>
 					<h1>THE END</h1>
 					<h3 class="inverted">BY Hakim El Hattab / hakim.se</h3>
@@ -253,7 +253,7 @@ function linkify( selector ) {
 
 			<!-- Displays presentation progress, max value changes via JS to reflect # of slides -->
 			<div class="progress"><span></span></div>
-			
+
 		</div>
 
 		<!-- Optional libraries for code syntax highlighting and classList support in IE9 -->
@@ -261,7 +261,10 @@ function linkify( selector ) {
 
 		<script>
 			// Load the main reveal.js script
-			head.js( 'js/reveal.js', function() {
+			head.js( 'js/reveal.js',
+							 'socket.io/socket.io.js',
+							 'plugin/speakernotes/client.js', function() {
+
 				// Parse the query string into a key/value object
 				var query = {};
 
@@ -282,7 +285,7 @@ function linkify( selector ) {
 				// Full list of configuration options available here:
 				// https://github.com/hakimel/reveal.js#configuration
 				Reveal.initialize({
-					controls: true,
+					controls: false,
 					progress: true,
 					history: true,
 
@@ -290,7 +293,7 @@ function linkify( selector ) {
 					transition: query.transition || 'default' // default/cube/page/concave/linear(2d)
 				});
 			} );
-			
+
 			// Load third party scripts
 			head.js( 'lib/js/classList.js' );
 			head.js( 'lib/js/highlight.js', function() {
@@ -298,12 +301,7 @@ function linkify( selector ) {
 				hljs.initHighlightingOnLoad();
 			} );
 
-			// If we're runnning the notes server we need to include some additional JS
-			// TODO Is there a better way to determine if we're running the notes server?
-			if( window.location.host === 'localhost:1947' ) {
-				head.js( 'socket.io/socket.io.js', 'plugin/speakernotes/client.js' );
-			}
 		</script>
-		
+
 	</body>
 </html>
